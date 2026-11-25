@@ -23,7 +23,6 @@
             "extensions": [
                 "Anthropic.claude-code",
                 "bmewburn.vscode-intelephense-client",
-                "cweijan.vscode-database-client2",
                 "DavidAnson.vscode-markdownlint",
                 "esbenp.prettier-vscode",
                 "GitHub.copilot",
