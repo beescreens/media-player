@@ -25,6 +25,9 @@ sudo apt install --yes ghostscript
 # Install network utilities (dig, nslookup, ping, ncat)
 sudo apt install --yes dnsutils iputils-ping ncat
 
+## Configure Xdebug to only start when explicitly triggered (XDEBUG_TRIGGER=1)
+sudo sed -i 's/^xdebug.start_with_request.*/xdebug.start_with_request = trigger/' /usr/local/etc/php/conf.d/xdebug.ini
+
 ## Git configuration
 # Set pull to rebase by default
 git config pull.rebase true
