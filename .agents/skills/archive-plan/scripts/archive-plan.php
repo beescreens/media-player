@@ -222,7 +222,7 @@ function parseTranscript(string $path): array
         $lastPrompt = [
             'id' => $record['uuid'] ?? sha1((string) $line),
             'request' => $prompt,
-            'date' => substr($record['timestamp'] ?? date('c'), 0, 10),
+            'date' => (new DateTimeImmutable($record['timestamp'] ?? 'now'))->setTimezone(new DateTimeZone('UTC')),
         ];
         $lastReply = '';
 
@@ -309,7 +309,7 @@ function writeArchive(array $cycle, string $directory): string
     if ($file === null) {
         $ascii = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $title) ?: $title;
         $slug = trim(substr(trim(preg_replace('~[^a-z0-9]+~', '-', strtolower($ascii)) ?? '', '-'), 0, 60), '-') ?: 'plan';
-        $base = "{$directory}/{$cycle['date']}-{$slug}";
+        $base = "{$directory}/{$cycle['date']->format('Y-m-d-Hi')}-{$slug}";
         $file = $base.'.md';
 
         for ($i = 2; file_exists($file); $i++) {
@@ -319,13 +319,14 @@ function writeArchive(array $cycle, string $directory): string
 
     $discussion = $cycle['events'] === [] ? 'None.' : implode("\n\n---\n\n", array_map(renderEvent(...), $cycle['events']));
     $plan = $plan !== '' ? $plan : 'Not available.';
+    $date = $cycle['date']->format('Y-m-d H:i');
 
     $markdown = <<<MD
     # {$title}
 
     {$marker}
 
-    - Date: {$cycle['date']}
+    - Date: {$date} UTC
     - Agent: Claude Code
     - Status: {$cycle['status']}
 

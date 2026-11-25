@@ -19,6 +19,9 @@ defeat the purpose of the archive. Running it again updates the same file, so
 manual edits to that file are lost. It writes files, so run it once plan mode
 has ended.
 
+Archives are named `YYYY-MM-DD-HHMM-<title>.md`, after the date and time (UTC) of
+the initial request, so they sort chronologically.
+
 Afterwards, give the user the path of the file. Remind them to check it for
 secrets and personal data before committing, and only commit if they ask.
 
