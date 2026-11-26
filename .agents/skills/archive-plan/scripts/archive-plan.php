@@ -4,7 +4,7 @@
 declare(strict_types=1);
 
 /*
- * Archives Claude Code plans from the session transcript to docs/plans.
+ * Archives Claude Code plans from the session transcript to .agents/plans.
  *
  * As a hook, the hook input is read as JSON from stdin.
  * Manually: php archive-plan.php --session <session-id>
@@ -406,7 +406,7 @@ try {
     if ($cycle !== false) {
         // Once approved, only the approval itself or a manual run rewrites the archive.
         $refresh = $manual || ($input['tool_name'] ?? '') === 'ExitPlanMode' || $cycle['status'] !== 'approved';
-        $file = $refresh ? writeArchive($cycle, $root.'/docs/plans') : null;
+        $file = $refresh ? writeArchive($cycle, $root.'/.agents/plans') : null;
     }
 
     if ($manual) {

@@ -7,6 +7,10 @@
 
         <title>{{ $title ?? config('app.name') }}</title>
 
+        @isset($description)
+            <meta name="description" content="{{ $description }}">
+        @endisset
+
         @fonts
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -17,6 +21,10 @@
     <body class="min-h-screen bg-white antialiased dark:bg-zinc-800">
         <flux:header container class="border-b border-zinc-200 dark:border-zinc-700">
             <flux:brand :href="route('home')" :name="config('app.name')" wire:navigate />
+
+            <flux:spacer />
+
+            <livewire:locale-switcher />
         </flux:header>
 
         <flux:main container>

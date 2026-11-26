@@ -25,6 +25,9 @@ sudo apt install --yes ghostscript
 # Install network utilities (dig, nslookup, ping, ncat)
 sudo apt install --yes dnsutils iputils-ping ncat
 
+# Install the BCMath PHP extension (required by Laravel Lang)
+sudo --preserve-env=PHP_INI_DIR docker-php-ext-install bcmath
+
 ## Configure Xdebug to only start when explicitly triggered (XDEBUG_TRIGGER=1)
 sudo sed -i 's/^xdebug.start_with_request.*/xdebug.start_with_request = trigger/' /usr/local/etc/php/conf.d/xdebug.ini
 

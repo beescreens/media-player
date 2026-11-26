@@ -8,7 +8,6 @@
     "mcp": true,
     "nightwatch": false,
     "sail": false,
-    // Skills managed by Laravel Boost
     "skills": [
         "infer-conventions",
         "laravel-best-practices",
