@@ -20,6 +20,6 @@ test('each language is named in itself and in the current language', function (s
 
     Livewire::test('locale-switcher')->assertSeeInOrder($names);
 })->with([
-    'English' => ['en', ['English', 'English', 'Français (French)']],
-    'French' => ['fr', ['Français', 'English (Anglais)', 'Français']],
+    'English' => ['en', ['English', 'Français (French)']],
+    'French' => ['fr', ['English (Anglais)', 'Français']],
 ]);

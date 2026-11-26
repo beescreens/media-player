@@ -24,9 +24,11 @@
 
             <flux:spacer />
 
-            <x-theme-switcher />
+            <div class="flex items-center gap-2">
+                <x-theme-switcher />
 
-            <livewire:locale-switcher />
+                <livewire:locale-switcher />
+            </div>
         </flux:header>
 
         <flux:main container>

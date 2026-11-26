@@ -1,6 +1,11 @@
 ---
 name: archive-plan
-description: Archive a Claude Code plan in .agents/plans, with the initial request, the comments, the questions and answers, and the final plan. Use whenever the user asks to archive, save, store, export or refresh a plan made in plan mode, asks where past plans are, or says that a plan archive is missing or incomplete.
+description:
+    Archive a Claude Code plan in .agents/plans, with the initial request, the
+    comments, the questions and answers, and the final plan. Use whenever the
+    user asks to archive, save, store, export or refresh a plan made in plan
+    mode, asks where past plans are, or says that a plan archive is missing or
+    incomplete.
 ---
 
 # Archive plan
@@ -19,8 +24,8 @@ defeat the purpose of the archive. Running it again updates the same file, so
 manual edits to that file are lost. It writes files, so run it once plan mode
 has ended.
 
-Archives are named `YYYY-MM-DD-HHMM-<title>.md`, after the date and time (UTC) of
-the initial request, so they sort chronologically.
+Archives are named `YYYY-MM-DD-HHMM-<title>.md`, after the date and time (UTC)
+of the initial request, so they sort chronologically.
 
 The `plan-id` comment at the top of an archive is the transcript ID of the
 initial request. The script uses it to find the archive again, so keep it when

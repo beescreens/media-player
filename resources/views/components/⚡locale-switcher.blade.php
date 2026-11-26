@@ -38,14 +38,7 @@ new class extends Component
 
 <div>
     <flux:dropdown align="end">
-        <flux:button
-            variant="ghost"
-            icon="language"
-            icon:trailing="chevron-down"
-            :aria-label="__('ui.common.locale_switcher')"
-        >
-            {{ __('ui.common.locales.'.app()->getLocale()) }}
-        </flux:button>
+        <flux:button variant="ghost" square icon="language" :aria-label="__('ui.common.locale_switcher')" />
 
         <flux:menu>
             @foreach (Locale::cases() as $locale)

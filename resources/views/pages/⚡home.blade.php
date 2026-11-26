@@ -22,7 +22,7 @@ new class extends Component
 ?>
 
 <div class="flex flex-col items-start gap-6">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
         <flux:heading size="xl" level="1">{{ config('app.name') }}</flux:heading>
         <flux:text>{{ __('ui.home.introduction') }}</flux:text>
     </div>

@@ -1,13 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": [
-        "laravel",
-        "framework"
-    ],
-    "license": "MIT",
+    "name": "beescreens/media-player",
+    "description": "A media player application built on the Laravel framework.",
+    "license": "AGPL-3.0-only",
     "require": {
         "php": "^8.3",
         "laravel/framework": "^13.17",
@@ -41,15 +37,29 @@
     },
     "scripts": {
         "setup": [
-            "composer install",
+            "composer install --prefer-dist",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php artisan key:generate",
-            "@php artisan migrate --force",
-            "npm install --ignore-scripts",
+            "@php artisan key:generate --silent",
+            "@php artisan migrate:fresh --seed --force",
+            "@php artisan storage:link --force",
+            "npm ci --ignore-scripts",
             "npm run build"
+        ],
+        "setup-prod": [
+            "composer install --prefer-dist --no-dev --optimize-autoloader",
+            "@php artisan storage:link --force",
+            "npm ci --ignore-scripts",
+            "npm run build"
+        ],
+        "format": [
+            "pint --blade"
+        ],
+        "format-check": [
+            "pint --blade --test"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
+            "docker compose up --detach mailpit mariadb phpmyadmin",
             "@php artisan dev"
         ],
         "test": [
@@ -62,7 +72,8 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan boost:update --ansi"
+            "@php artisan boost:update --ansi",
+            "@php artisan lang:update"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
