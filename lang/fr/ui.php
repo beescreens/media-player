@@ -7,6 +7,12 @@ return [
             'en' => 'Anglais',
             'fr' => 'Français',
         ],
+        'theme_switcher' => 'Changer de thème',
+        'themes' => [
+            'light' => 'Clair',
+            'dark' => 'Sombre',
+            'system' => 'Système',
+        ],
     ],
     'home' => [
         'title' => 'Accueil',

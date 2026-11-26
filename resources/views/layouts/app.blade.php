@@ -24,6 +24,8 @@
 
             <flux:spacer />
 
+            <x-theme-switcher />
+
             <livewire:locale-switcher />
         </flux:header>
 
