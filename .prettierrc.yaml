@@ -1,0 +1,3 @@
+# Prettier will read the EditorConfig file and use the settings defined there.
+printWidth: 80
+proseWrap: always

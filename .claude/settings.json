@@ -1,0 +1,50 @@
+{
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "ExitPlanMode",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "php \"$CLAUDE_PROJECT_DIR/.agents/skills/archive-plan/scripts/archive-plan.php\"",
+                        "timeout": 30
+                    }
+                ]
+            }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "ExitPlanMode",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "php \"$CLAUDE_PROJECT_DIR/.agents/skills/archive-plan/scripts/archive-plan.php\"",
+                        "timeout": 30
+                    }
+                ]
+            }
+        ],
+        "Stop": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "php \"$CLAUDE_PROJECT_DIR/.agents/skills/archive-plan/scripts/archive-plan.php\"",
+                        "timeout": 30
+                    }
+                ]
+            }
+        ],
+        "SessionEnd": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "php \"$CLAUDE_PROJECT_DIR/.agents/skills/archive-plan/scripts/archive-plan.php\"",
+                        "timeout": 30
+                    }
+                ]
+            }
+        ]
+    }
+}

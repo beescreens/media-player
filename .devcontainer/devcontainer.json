@@ -1,0 +1,66 @@
+{
+    "name": "BeeScreens PHP Development Container",
+    // https://github.com/devcontainers/images/tree/main/src/php
+    "image": "mcr.microsoft.com/devcontainers/php:8.5-trixie",
+    // Set environment variables for the container
+    "containerEnv": {
+        "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+    "features": {
+        "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:4.1.3": {
+            "moby": false
+        },
+        "ghcr.io/devcontainers/features/node:2": {
+            // https://github.com/nodejs/release#release-schedule
+            "version": "26"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Anthropic.claude-code",
+                "bmewburn.vscode-intelephense-client",
+                "DavidAnson.vscode-markdownlint",
+                "esbenp.prettier-vscode",
+                "GitHub.copilot",
+                "jebbs.plantuml",
+                "laravel.vscode-laravel",
+                "marp-team.marp-vscode",
+                "open-southeners.laravel-pint",
+                "redhat.vscode-yaml",
+                "streetsidesoftware.code-spell-checker",
+                "streetsidesoftware.code-spell-checker-french",
+                "xdebug.php-debug",
+                "yzhang.markdown-all-in-one"
+            ]
+        }
+    },
+    // Mount a volume to persist the Claude configuration across container rebuilds
+    "mounts": [
+        "source=claude-code-config,target=/home/vscode/.claude,type=volume"
+    ],
+    // Ports to expose on the container's network host
+    "forwardPorts": [3306, 5173, 8000, 8025, 9090],
+    "portsAttributes": {
+        "3306": {
+            "label": "MariaDB Database Server"
+        },
+        "5173": {
+            "label": "Vite Development Server"
+        },
+        "8000": {
+            "label": "Laravel Development Server"
+        },
+        "8025": {
+            "label": "Mailpit SMTP Server"
+        },
+        "9090": {
+            "label": "phpMyAdmin Web Interface"
+        }
+    },
+    // Execute the following command once the container is created
+    "postCreateCommand": ".devcontainer/post-create.sh"
+}

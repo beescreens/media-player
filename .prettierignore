@@ -1,0 +1,11 @@
+# Dev Containers dependencies
+.devcontainer/devcontainer-lock.json
+
+# Laravel Boost dependencies
+.agents/skills/fluxui-development
+.agents/skills/infer-conventions
+.agents/skills/laravel-best-practices
+.agents/skills/livewire-development
+.agents/skills/tailwindcss-development
+.agents/skills/testing-best-practices
+boost.json
